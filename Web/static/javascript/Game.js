@@ -2,66 +2,64 @@ var state = new GameState();
 //read cookie if one exists
 var current_room = state.getCurrentRoom();
 // var current_room = KernelFiles;
-var man_pages = {"cd": "The old man's voice echoes in your head as if from a great distance: \n"+
-"(Choose Destination) Use \"cd\" to move about the world. \n" +
-"Command Input: cd LOCATION \n" +
- "Rememberrrrrr...", 
-"mv": "The old man's voice echoes in your head as if from a great distance: \n" + 
-"(MoVe). \n Use \"mv\" to move an object to a new location. \n Command Input:" + 
+var man_pages = {"cd": "遥か彼方から聞こえるかのように老人の声が頭の中に響く: \n"+
+"(場所を選ぶ) \"cd\"を使って世界を歩き回るのじゃ。 \n" +
+"コマンド入力: cd LOCATION \n" +
+ "忘れるなよぉぉぉぉ...", 
+"mv": "遥か彼方から聞こえるかのように老人の声が頭の中に響く: \n"+ 
+"(MoVe). \n \"mv\"でオブジェクトを移動させるのじゃ。\n コマンド入力:" + 
 "mv OBJECT NEWLOCATION \n" + 
-"Rememberrrrrr...",
-"ls": "The old man's voice echoes in your head as if from a great distance: \n" + 
-"(Look at your Surroundings). \n Use \"ls\" to look at what’s in a certain location. " +
-"Either your current location or (rarely) you may have look into a location to see "+
-"what's in it. \n" + 
-" Command Input: \n" + 
-"ls          (for current location) \n" + 
+"忘れるなよぉぉぉぉ...",
+"ls": "遥か彼方から聞こえるかのように老人の声が頭の中に響く: \n" + 
+"(周りを見渡す). \n \"ls\"を使って、ある場所に何があるか見るのじゃ。" +
+"現在地点か、(あまりないが)他の場所に何があるのか見ることもできるぞい。\n"+
+" コマンド入力: \n" + 
+"ls          (現在地用) \n" + 
 "-OR- \n" + 
-"ls LOCATION     (for locations you that you cannot \"cd\" into)\n" + 
-"Rememberrrrrr...", 
-"less": "The old man's voice echoes in your head as if from a great distance: \n"+
-"(Look at, Examine, or Speak to Something). \nUse \"less\" to look at what’s in a "+
-"certain location. Either your current location or (rarely) you may have look into a "+
-"location to see what is in it. \n" + 
-"Command Input: less ITEM\n" +
-"Rememberrrrrr...", 
-"man": "I'm the old man dangit! You can't try to get more information about me. Here are all the commands you can man: cd, ls, rm, mv, exit, help, man, touch, grep, pwd.", 
-"help": "Type \"man COMMAND\" if you forget how to use a command.", 
-"exit": "The old man's voice echoes in your head as if from a great distance:\n" + 
+"ls LOCATION     (\"cd\"で入れない場所用)\n" + 
+"忘れるなよぉぉぉぉ...", 
+"less": "遥か彼方から聞こえるかのように老人の声が頭の中に響く: \n"+
+"(物を見る、調べる、または誰かに話しかける). \n\"less\"を使ってとある場所に何があるのか見るのじゃ。"+
+"現在地点か、(あまりないが)他の場所に何があるのか見ることもできるぞい。\n"+
+"コマンド入力: less ITEM\n" +
+"忘れるなよぉぉぉぉ...", 
+"man": "I'm the old man dangit! わしのことを調べようったってそうはいかんぞい。 manで調べられるコマンドは: cd, ls, rm, mv, exit, help, man, touch, grep, pwd.", 
+"help": "コマンドの使い方がわからなくなったら\"man COMMAND\"するのだぞ。", 
+"exit": "遥か彼方から聞こえるかのように老人の声が頭の中に響く:\n" + 
 "(exit) \n" + 
-"Use \"exit\" to exit the game permanently. \n" + 
-"Command Input: \n" + 
+"\"exit\"を使うとゲームをやめることができるのじゃ。永久にな。" + 
+"コマンド入力: \n" + 
 "exit \n" + 
-"Rememberrrrrr...", 
-"cp": "The old man's voice echoes in your head as if from a great distance:\n" +
+"忘れるなよぉぉぉぉ...", 
+"cp": "遥か彼方から聞こえるかのように老人の声が頭の中に響く:\n" +
 "(CoPy)\n" + 
-"Use \"cp\" to duplicate an item. \n" + 
-"Command Input:\n" + 
+"\"cp\"を使ってアイテムを複製するのじゃ。\n" + 
+"コマンド入力:\n" + 
 "cp ITEM NEWNAME \n" +
-"Rememberrrrrr...", 
-"pwd": "The old man's voice echoes in your head as if from a great distance: \n" + 
-"(Print Where i Do stuff) \n" +
-"To remind yourself where you currently are.\n" + 
-"Command Input: \n" + 
+"忘れるなよぉぉぉぉ...", 
+"pwd": "遥か彼方から聞こえるかのように老人の声が頭の中に響く: \n" + 
+"(今どこにいるのかを出力する) \n" +
+"今どこにいるのか思い出すのじゃ。\n" + 
+"コマンド入力: \n" + 
 "pwd \n" + 
-"Rememberrrrrr...",
-"grep": "The old man's voice echoes in your head as if from a great distance:\n" +
+"忘れるなよぉぉぉぉ...",
+"grep": "遥か彼方から聞こえるかのように老人の声が頭の中に響く:\n" +
 "(grep) \n" + 
-"Use \"grep\" to command your minion to help search through text for you.\n" + 
-"Command Input: \n" + 
-"grep WORDTOSEARCH PLACETOSEARCH \n" +
-"Rememberrrrrr...",
-"touch": "The old man's voice echoes in your head as if from a great distance:\n"+
-"(Touch) gives you the artisan's touch to create new objects.\n" +
-"Use \"touch\" to create new objects in the world.\n" +
-"Command Input:\n" + 
+"\"grep\"を使ってミニオンにテキストの中から検索するのを手伝ってもらうのじゃ。\n" + 
+"コマンド入力: \n" + 
+"grep 調べる単語 調べる対象 \n" +
+"忘れるなよぉぉぉぉ...",
+"touch": "遥か彼方から聞こえるかのように老人の声が頭の中に響く:\n"+
+"(触る) 職人の手で新たな物体を生成する\n" +
+"\"touch\" を使って世界に新たな物体を生成するのじゃ。\n" +
+"コマンド入力:\n" + 
 "touch OBJECT \n" + 
-"Rememberrrrrr...", 
-"tellme": "The old man's voice echoes in your head as if from a great distance:\n"+
-"(tellme combo) tells you the combination for the AthenaCluster rooms at MIT.\n"+
-"Command Input:\n"+
+"忘れるなよぉぉぉぉ...", 
+"tellme": "遥か彼方から聞こえるかのように老人の声が頭の中に響く:\n"+
+"(tellme combo) MITのAthenaClusterルームのコンビネーションを得るのじゃ。\n"+
+"コマンド入力:\n"+
 "tellme combo\n"+
-"Rememberrrrrr..."}
+"忘れるなよぉぉぉぉ..."}
 
 $(document).ready(function() {
     $('#term').terminal(function(input, term) {
@@ -108,13 +106,13 @@ $(document).ready(function() {
         prompt: '>',                        // Text that prefixes terminal entries
         name: 'terminus_terminal',          // Name of terminal
                                             // Signiture to include at top of terminal
-        greetings:"Welcome! If you are new to the game, here are some tips: \n\n" +
-		"Look at your surroundings with the command \"ls\". \n" +
-		"Move to a new location with the command \"cd LOCATION\" \n" +
-		"You can backtrack with the command \"cd ..\". \n" +
-		"Interact with things in the world with the command \"less ITEM\" \n\n" +
-        "If you forget where you are, type \"pwd\" \n\n" + 
-		"Go ahead, explore. We hope you enjoy what you find. Do ls as your first command.\n",
+        greetings:"ようこそ！初めて来た人へ:\n\n" +
+		"\"ls\"コマンドで身の回りを確認してください。 \n" +
+		"\"cd LOCATION\"コマンドで新たな場所へ移動できます。 \n" +
+		"\"cd ..\"コマンドで一つ前の場所へ戻ることができます。 \n" +
+		"\"less ITEM\"コマンドでこの世界のものに 触ることができます。\n\n" +
+        "今どこにいるのかわからなくなったら、\"pwd\"コマンドで確認できます。 \n\n" + 
+		"さあ、探検へ出かけましょう。ここでの発見が、楽しいものであることを祈っています。lsコマンドを実行して、始めましょう。\n",
         exit: false,                        // Disable 'exit' command
         clear: true,                       // Disable 'clear' command
         });
